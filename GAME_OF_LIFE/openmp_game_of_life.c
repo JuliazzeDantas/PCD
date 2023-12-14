@@ -129,16 +129,6 @@ int main(){
 
     for(int count_total = 0; count_total < 2000; count_total++){
 
-            /*
-            for(int count_col = 0; count_col < max_quantity; count_col++){
-                for(int count_line = 0; count_line < max_quantity; count_line++){
-                    printf("%.0f  ", grid[count_line][count_col]);
-                }
-                printf("\n");
-            }*/ 
-
-        printf("\n");
-        
         #pragma omp parallel for reduction(+:survivor)
         
         for(int count_x = 0; count_x < max_quantity; count_x++){
@@ -146,8 +136,6 @@ int main(){
                 natural_selection(grid, newgrid, count_x, count_y);
             }
         }
-
-        printf("O número de sobreviventes da geração %d foi de %d \n", count_total, survivor);
             
         aux = grid;
         grid = newgrid;

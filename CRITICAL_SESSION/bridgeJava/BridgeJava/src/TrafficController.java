@@ -12,7 +12,7 @@ public class TrafficController {
     public void enterLeft() {
     	try {
 			sem.acquire();
-			System.out.println("Carro vermelho entrando na ponte");
+			System.out.println("Carro vermelho entrando");
 		} catch (InterruptedException e) {
 			System.out.println("enterLeft acquire() exception");
 		}
@@ -21,7 +21,7 @@ public class TrafficController {
     public void enterRight() {
     	try {
 			sem.acquire();
-			System.out.println("Carro azul entrando na ponte");
+			System.out.println("Carro azul entrando");
 		} catch (InterruptedException e) {
 			System.out.println("enterRight acquire() exception");
 		}
@@ -29,11 +29,11 @@ public class TrafficController {
     
     public void leaveLeft() {
     	sem.release();
-    	System.out.println("Carro vermelho saindo da ponte");
+    	System.out.println("Carro vermelho saindo");
     }
     
     public void leaveRight() {
     	sem.release();
-    	System.out.println("Carro azul saindo da ponte");
+    	System.out.println("Carro azul saindo");
     }
 }

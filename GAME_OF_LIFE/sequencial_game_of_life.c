@@ -125,23 +125,13 @@ int main(){
 
     for(int count_total = 0; count_total < 2000; count_total++){
 
-        /*
-        for(int count_col = 0; count_col < max_quantity; count_col++){
-            for(int count_line = 0; count_line < max_quantity; count_line++){
-                printf("%.0f  ", grid[count_line][count_col]);
-            }
-            printf("\n");
-        }*/ 
-
-        printf("\n");
-
         for(int count_x = 0; count_x < max_quantity; count_x++){
             for(int count_y = 0; count_y < max_quantity; count_y++){
                 natural_selection(grid, newgrid, count_x, count_y);
             }
         }
 
-        printf("O número de sobreviventes da geração %d foi de %d \n", count_total, survivor);
+        
         
         aux = grid;
         grid = newgrid;
@@ -150,7 +140,7 @@ int main(){
    
     gettimeofday(&end, NULL);
     seconds  = end.tv_sec  - start.tv_sec;
-
+    printf("O número de sobreviventes foi de %d \n", survivor);
     printf("\n\n\n");
     printf("O TEMPO DECORRIDO FOI DE %ld", seconds);
 

@@ -4,7 +4,7 @@
 #include <sys/time.h>
 
 #define max_quantity 2048
-#define num_threads 4
+#define num_threads 8
 
 int survivor = 10;
 
@@ -144,25 +144,8 @@ int main(){
 
     gettimeofday(&start, NULL);
 
-    printf("O número de sobreviventes da geração %d foi de %d \n", 0, survivor);
-
     for(int count_total = 0; count_total < 2000; count_total++){
 
-            
-            /*for(int count_col = 0; count_col < max_quantity; count_col++){
-                for(int count_line = 0; count_line < max_quantity; count_line++){
-                    if(grid[count_line][count_col] == 0){
-                        printf("   %.f    ", grid[count_line][count_col]);
-                    }
-                    else{
-                        printf("%.4f  ", grid[count_line][count_col]);
-                    }
-                }
-                printf("\n");
-            } */
-
-        printf("\n");
-        
         #pragma omp parallel for reduction(+:survivor)
         
         for(int count_x = 0; count_x < max_quantity; count_x++){
@@ -170,8 +153,6 @@ int main(){
                 natural_selection(grid, newgrid, count_x, count_y);
             }
         }
-
-        printf("O número de sobreviventes da geração %d foi de %d \n", count_total + 1, survivor);
             
         aux = grid;
         grid = newgrid;

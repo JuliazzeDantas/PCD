@@ -4,7 +4,7 @@
 #include <sys/time.h>
 
 #define max_quantity 2048
-#define num_threads 1
+#define num_threads 8
 
 int piece_survivor[num_threads];
 int survivor = 10;
@@ -142,20 +142,11 @@ void through_the_ages(){
             pthread_join(t[count_threads], NULL);
         }
 
-        printf("\n");
-
         for (int count_threads = 0; count_threads < num_threads; count_threads++) {
             survivor = survivor + piece_survivor[count_threads];
             piece_survivor[count_threads] = 0;
         }
-        printf("Generation %d - Number of survivor: %d\n", count_total + 1, survivor);
 
-        /*for(int count_col = 0; count_col < max_quantity; count_col++){
-            for(int count_line = 0; count_line < max_quantity; count_line++){
-                printf("%.0f  ", grid[count_line][count_col]);
-            }
-            printf("\n");
-        }*/
 
         aux = grid;
         grid = newgrid;
